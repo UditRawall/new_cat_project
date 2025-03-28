@@ -99,6 +99,16 @@ export interface CatImage {
       fetchCatImages();
       fetchBreeds();
     }, []);
+
+    useEffect(() => {
+      if (selectedBreed) {
+        fetchCatImages(selectedBreed);
+      } else {
+        fetchCatImages();
+      }
+    }, [selectedBreed]);
+
+    
   
     const handleBreedChange = (breedId: string) => {
 
@@ -111,6 +121,8 @@ export interface CatImage {
     const handleLoadMore = () => {
       fetchCatImages(selectedBreed);
     };
+
+
   
     return (
       <div className="container mx-auto p-4">
